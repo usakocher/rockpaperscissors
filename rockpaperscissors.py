@@ -52,11 +52,11 @@ class StratOpponent:
             return 'Paper'
         elif self.previous['Last'] == 'Scissors' and win == True:
             return 'Scissors'
-        elif self.previous['Last'] == 'Rock' and self.play == 'Paper':
+        elif self.previous['Last'] == 'Rock' and self.play == 'Paper' and win == False:
             return 'Scissors'
-        elif self.previous['Last'] == 'Paper' and self.play == 'Scissors':
+        elif self.previous['Last'] == 'Paper' and self.play == 'Scissors' and win == False:
             return 'Rock'
-        elif self.previous['Last'] == 'Rock' and self.play == 'Scissors':
+        elif self.previous['Last'] == 'Rock' and self.play == 'Scissors' and win == False:
             return 'Paper'
         else:
             answer = random.choices(self.choices, weights=[35.4, 35.0, 29.6], k = 1)
