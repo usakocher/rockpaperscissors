@@ -19,10 +19,10 @@ No other strategy is employed
 The strategic opponent takes in some extra data to evaluate before deciding on a play. It looks at the last two player desicions and the
 result of the previous game to decide on a play in the following order:<br>
 
-If the player has played the same choice the last two times, the computer will play that same choice. Because Naive players don’t like to repeat
-the same throw more than twice in a row. The counterstrategy is to choose whatever sign the doubled sign would beat. Should your opponent throw 
-rock and rock a second time; you would want to choose scissors on the next throw. Given that the opponent is unlikely to play rock again, scissors 
-would be unbeatable. In case of paper, scissors wins; should the opponent choose scissors, it’s a tie.<br>
+If the player has played the same choice the last two times, the computer will play the choice that would be beaten by the repeated choice. 
+Because Naive players don’t like to repeat the same throw more than twice in a row. The counterstrategy is to choose whatever sign the doubled
+sign would beat. Should your opponent throw rock and rock a second time; you would want to choose scissors on the next throw. Given that 
+the opponent is unlikely to play rock again, scissors would be unbeatable. In case of paper, scissors wins; should the opponent choose scissors, it’s a tie.<br>
 
 The second strategy is called mirroring. If you just won, play what your opponent just played, because he or she will think that you are going 
 to play the same gesture again. The opponent looks at the previous play and a boolean value of if it had won the previous throw.<br>
