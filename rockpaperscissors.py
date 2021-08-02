@@ -9,16 +9,15 @@ class Player:
     def printStats(self):
         self.totalWins = self.wins['Rock'] + self.wins['Paper'] + self.wins['Scissors']
         self.totalLosses = self.losses['Rock'] + self.losses['Paper'] + self.losses['Scissors']
-        if self.totalWins != 0 and self.totalLosses != 0:
+        if self.totalWins != 0 or self.totalLosses != 0:
             print(f'Your overall record was {self.totalWins} - {self.totalLosses}')
-            if 0 not in self.wins.values():
-                sharesRock = self.wins['Rock']/(self.totalWins + self.totalLosses)
-                sharesPaper = self.wins['Paper']/(self.totalWins + self.totalLosses)
-                sharesScissors = self.wins['Scissors']/(self.totalWins + self.totalLosses)
-                print('You were successful ' + "{:.2%}".format(sharesRock) + ' for Rock')
-                print('You were successful ' + "{:.2%}".format(sharesPaper) + ' for Paper')
-                print('You were successful ' + "{:.2%}".format(sharesScissors) + ' for Scissors')
-                return
+            sharesRock = self.wins['Rock']/(self.totalWins + self.totalLosses)
+            sharesPaper = self.wins['Paper']/(self.totalWins + self.totalLosses)
+            sharesScissors = self.wins['Scissors']/(self.totalWins + self.totalLosses)
+            print('You were successful ' + "{:.2%}".format(sharesRock) + ' for Rock')
+            print('You were successful ' + "{:.2%}".format(sharesPaper) + ' for Paper')
+            print('You were successful ' + "{:.2%}".format(sharesScissors) + ' for Scissors')
+            return
         else:
             print('Not enough data collected to return statistics.')
 
@@ -42,11 +41,11 @@ class StratOpponent:
     def computerPlay(self):
         win = False
         if self.previous['Last'] == 'Rock' and self.previous['secondLast'] == 'Rock':
-            return 'Rock'
-        elif self.previous['Last'] == 'Paper' and self.previous['secondLast'] == 'Paper':
-            return 'Paper'
-        elif self.previous['Last'] == 'Scissors' and self.previous['secondLast'] == 'Scissors':
             return 'Scissors'
+        elif self.previous['Last'] == 'Paper' and self.previous['secondLast'] == 'Paper':
+            return 'Rock'
+        elif self.previous['Last'] == 'Scissors' and self.previous['secondLast'] == 'Scissors':
+            return 'Paper'
         elif self.previous['Last'] == 'Rock' and win == True:
             return 'Rock'
         elif self.previous['Last'] == 'Paper' and win == True:
