@@ -27,6 +27,7 @@ class RandomOpponent:
     def __init__(self):
         self.choices = ['Rock', 'Paper', 'Scissors']
         self.previous = {'Last': '0', 'secondLast': '1'}
+        self.play = ['blank']
 
     def computerPlay(self):
         return self.choices[random.randint(0,2)]
@@ -36,6 +37,7 @@ class StratOpponent:
     def __init__(self):
         self.choices = ['Rock', 'Paper', 'Scissors']
         self.previous = {'Last': '0', 'secondLast': '1'}
+        self.play = ['blank']
 
     def computerPlay(self):
         win = False
@@ -49,8 +51,14 @@ class StratOpponent:
             return 'Rock'
         elif self.previous['Last'] == 'Paper' and win == True:
             return 'Paper'
-        elif self.previous['Last'] == 'scissors' and win == True:
+        elif self.previous['Last'] == 'Scissors' and win == True:
             return 'Scissors'
+        elif self.previous['Last'] == 'Rock' and self.play == 'Paper':
+            return 'Scissors'
+        elif self.previous['Last'] == 'Paper' and self.play == 'Scissors':
+            return 'Rock'
+        elif self.previous['Last'] == 'Rock' and self.play == 'Scissors':
+            return 'Paper'
         else:
             answer = random.choices(self.choices, weights=[35.4, 35.0, 29.6], k = 1)
             return answer[0]
@@ -64,7 +72,7 @@ class Game:
         while True:
             choice = input('Please make a choice: rock, paper or scissors ')
             if choice.lower() == 'rock' or choice.lower() == 'paper' or choice.lower() == 'scissors':
-                return choice
+                return choice.title()
             else:
                 print('Please make a valid selection.')
 
@@ -74,6 +82,7 @@ class Game:
             if response.lower() == 'y':
                 choice = self.validate()
                 enemy = opponent.computerPlay()
+                opponent.play = enemy
                 if choice.title() == enemy:
                     print('Game Tied')
                 elif choice.lower() == 'rock' and enemy == 'Scissors':
