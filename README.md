@@ -12,7 +12,7 @@ decision. The other plays according to general strategy for the game.
 
 ## Strategy
 #### Random Opponent
-The random opponent generates a random number from zero to three and applies that number as the index position of a list of choices.
+The random opponent generates a random number from zero to two and applies that number as the index position of a list of choices.
 No other strategy is employed
 
 #### Stategic Opponent
